@@ -1,10 +1,15 @@
+
+## Resolver o problema de tupla fora do intervalo
+## Está ocorrendo na rota onde está o regex
+## Para funcionar normalmente, desabilitar todos os comandos referentes a ele, inclusive imortação
+
 from flask import Flask, abort
 from bd import users
-from converters import ListConverter
+from converters import ListConverter, RegexConverter
 
 app = Flask(__name__)
 #OBS: o msm nome que eu chamar nesta lista, é o msm que coloca quando chama
-# app.url_map.converters["regex"] = RegexConverter
+app.url_map.converters["regex"] = RegexConverter
 app.url_map.converters["list"] = ListConverter
 
 
@@ -63,13 +68,13 @@ def file(variavel):
     return f"exemplo para mostar os carminho: {variavel}"
 
 
-'''# o conversor de url regex() aceitar determinadas variaveis, no caso começando com <A> e pode vim qualquer coisa depois
+# o conversor de url regex() aceitar determinadas variaveis, no caso começando com <A> e pode vim qualquer coisa depois
 @app.route("/reg/<regex(a.*):variavel>")
 def reg1(variavel):
     return f"Qualquer argumento iniciando com a letra a: {variavel}"
 
 @app.route("/reg/<regex:(b.*)variavel>")
 def reg1(variavel):
-    return f"Qualquer argumento iniciando com a letra b: {variavel}"'''
+    return f"Qualquer argumento iniciando com a letra b: {variavel}"
 
 app.run(use_reloader=True)
