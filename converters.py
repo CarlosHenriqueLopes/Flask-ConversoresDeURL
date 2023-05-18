@@ -1,14 +1,14 @@
 from werkzeug.routing import BaseConverter
 
 
-## REVISAR ERRO DE TUPLA
-#class RegexConverter(BaseConverter):
+## REVISAR ERRO DE TUPLA  (class com problema, desabilitar para funcionar normalmente)
+class RegexConverter(BaseConverter):
     # sobreescrever o metodo init
     # url_map -> lista com todos os conversores do flask
     # *items -> onde esta o argumento do regex(aqui)
-'''    def __init__(self, url_map, *items):
+    def __init__(self, url_map, *items):
         super(RegexConverter, self).__init__(url_map)
-        self.regex = items[0]'''
+        self.regex = items[0]
         # o items é 0, pq é o primeiro a ser colocado la no regex
 
 
